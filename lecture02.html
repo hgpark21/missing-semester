@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<head>
+  <title>MIT: Missing-Semester</title>
+  <style>
+    body {
+      margin: 1.5em;
+    }
+    tt, code {
+      font: 16px monospace;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1> Lecture 2. Shell Tools and Scripting </h1>
+
+<h2>Topics</h2>
+<ul>
+  <li>Command Shell</li>
+  <li>Version Control</li>
+  <li>Text Editing</li>
+  <li>Remote Machines</li>
+  <li>Finding Files</li>
+  <li>Data Wrangling</li>
+  <li>Virtual Machines</li>
+  <li>Security</li>
+</ul>
+
+<h2> Summary </h2>
+
+We will present some of the basics of using bash as a scripting language along with a number of shell tools that cover several of the most common tasks that you will be constantly performing in the command line.
+
+<h2> Exercises </h2>
+
+<ol>
+
+  <li>
+    Read <tt>man ls</tt> and write an <tt>ls</tt> command that lists files in the following manner
+    <ul>
+      <li>Includes all files, including hidden files</li>
+      <li>Sizes are listed in human readable format (e.g. <tt>454M</tt> instead of <tt>454279954</tt>)</li>
+      <li>Files are ordered by recency</li>
+      <li>Output is colorized</li>
+      <li>A sample output would look like this
+        <pre>
+          -rw-r--r--   1 user group 1.1M Jan 14 09:53 baz
+          drwxr-xr-x   5 user group  160 Jan 14 09:53 .
+          -rw-r--r--   1 user group  514 Jan 14 06:42 bar
+          -rw-r--r--   1 user group 106M Jan 13 12:12 foo
+          drwx------+ 47 user group 1.5K Jan 12 18:08 ..
+        </pre>
+      </li>
+    </ul>
+  </li>
+
+<li>
+  Write <strong>bash functions</strong> <tt>marco</tt> and <tt>polo</tt> that do the following. Whenever you execute <tt>marco</tt> the current working directory should be saved in some manner, then when you execute <tt>polo</tt>, no matter what directory you are in, <tt>polo</tt> should cd you back to the directory where you executed marco. For ease of debugging you can write the code in a file <tt>marco.sh</tt> and (re)load the definitions to your shell by executing source <tt>marco.sh</tt>. Write <strong>bash functions</strong> <tt>marco</tt> and <tt>polo</tt> that do the following. Whenever you execute <tt>marco</tt> the current working directory should be saved in some manner, then when you execute <tt>polo</tt>, no matter what directory you are in, <tt>polo</tt> should <tt>cd</tt> you back to the directory where you executed <tt>marco</tt>. For ease of debugging you can write the code in a file <tt>marco.sh</tt> and (re)load the definitions to your shell by executing source <tt>marco.sh</tt>.
+  </li>
+
+<li>
+  Say you have a command that fails rarely. In order to <tt>debug</tt> it you need to capture its output but it can be time consuming to get a failure run. Write a <strong>bash script</strong> that runs the following script until it fails and captures its standard output and error streams to files and prints everything at the end. Bonus points if you can also report how many runs it took for the script to fail.
+  <pre>
+    <i style="color=gray">#!/usr/bin/env bash</i>
+
+    n=$(( RANDOM % 100 ))
+
+    if [[ n -eq 42 ]]; then
+       echo "Something went wrong"
+       >&2 echo "The error was using magic numbers"
+       exit 1
+    fi
+
+    echo "Everything went according to plan"
+  </pre>
+</li>
+
+<li>
+  As we covered in the lecture <code>find</code>'s <code>-exec</code> can be very powerful for performing operations over the files we are searching for. However, what if we want to do something with all the files, like creating a zip file? As you have seen so far commands will take input from both arguments and <code>STDIN</code>. When piping commands, we are connecting <code>STDOUT</code> to <code>STDIN</code>, but some commands like tar take inputs from arguments. To bridge this disconnect there’s the xargs command which will execute a command using STDIN as arguments. For example, <code>ls | xargs rm</code> will delete the files in the current directory.
+  <br><br>
+  Your task is to write a command that recursively finds all HTML files in the folder and makes a zip with them. Note that your command should work even if the files have spaces (hint: check <code>-d flag</code> for <code>xargs</code>)
+</li>
+
+<li>(Advanced) Write a command or script to recursively find the most recently modified file in a directory. More generally, can you list all files by recency?</li>
+
+</ol>
+
+</body>
