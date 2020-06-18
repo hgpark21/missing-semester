@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+  <title>MIT: Missing-Semester</title>
+  <style>
+    body {
+      margin: 1.5em;
+    }
+    tt, code {
+      font: 16px monospace;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1> Lecture 3. Editors (Vim) </h1>
+
+<h2>Topics</h2>
+<ul>
+  <li>Command Shell</li>
+  <li>Version Control</li>
+  <li>Text Editing</li>
+  <li>Remote Machines</li>
+  <li>Finding Files</li>
+  <li>Data Wrangling</li>
+  <li>Virtual Machines</li>
+  <li>Security</li>
+</ul>
+
+<h2> Summary </h2>
+Writing English words and writing code are very different activities. When programming, you spend more time switching files, reading, navigating, and editing code compared to writing a long stream. It makes sense that there are different types of programs for writing English words versus code (e.g. <strong>Microsoft Word</strong> versus <strong>Visual Studio Code</strong>).
+
+As programmers, we spend most of our time editing code, so it's worth investing time mastering an editor that fits your needs. Here's how you learn a new editor:
+<ul>
+  <li>Start with a tutorial (i.e. this lecture, plus resources that we point out)</li>
+  <li>Stick with using the editor for all your text editing needs (even if it slows you down initially)</li>
+  <li>Look things up as you go: if it seems like there should be a better way to do something, there probably is</li>
+</ul>
+If you follow the above method, fully committing to using the new program for all text editing purposes, the timeline for learning a sophisticated text editor looks like this. In an hour or two, you’ll learn basic editor functions such as opening and editing files, save/quit, and navigating buffers. Once you’re 20 hours in, you should be as fast as you were with your old editor. After that, the benefits start: you will have enough knowledge and muscle memory that using the new editor saves you time. Modern text editors are fancy and powerful tools, so the learning never stops: you’ll get even faster as you learn more.
+
+<h2>Vim</h2>
+
+All the instructors of this class use Vim as their editor. Vim has a rich history; it originated from the Vi editor (1976), and it’s still being developed today. Vim has some really neat ideas behind it, and for this reason, lots of tools support a Vim emulation mode (for example, 1.4 million people have installed <strong>Vim emulation for VS code</strong>). Vim is probably worth learning even if you finally end up switching to some other text editor.
+
+<h2> Exercises </h2>
+
+<ol>
+
+  <li>
+    Create a new directory called missing under <tt>/tmp</tt>.
+  </li>
+
+  <li>
+    Look up the touch program. The man program is your friend.
+  </li>
+
+  <li>
+    Use touch to create a new file called <tt>semester</tt> in missing.
+  </li>
+
+  <li>
+    Write the following into that file, one line at a time:
+      <pre>
+        #!/bin/sh
+        curl --head --silent https://missing.csail.mit.edu
+      </pre>
+    The first line might be tricky to get working. It's helpful to know that <tt>#</tt> starts a comment in <tt>Bash</tt>, and <tt>!</tt> has a special meaning even within double-quoted (") strings. Bash treats single-quoted strings (') differently: they will do the trick in this case. (See the Bash quoting manual page for more information.)
+  </li>
+
+  <li>
+    Try to execute the file, i.e. type the path to the script (<tt>./semester</tt>) into your shell and press enter. Understand why it doesn't work by consulting the output of <tt>ls</tt> (hint: look at the <strong>permission bits</strong> of the file).
+  </li>
+
+  <li>
+    Run the command by explicitly starting the <tt>sh</tt> interpreter, and giving it the file semester as the first argument, i.e. <tt>sh semester</tt>. Why does this work, while <tt>./semester</tt> didn't?
+  </li>
+
+  <li>
+    Look up the chmod program (e.g. use <tt>man chmod</tt>). Use <tt>chmod</tt> to make it possible to run the command <tt>./semester</tt> rather than having to type <tt>sh semester</tt>. How does your shell know that the file is supposed to be interpreted using <tt>sh</tt>? See this page on the shebang line for more information.
+  </li>
+
+  <li>
+    Use <tt>|</tt> and <tt>></tt> to write the "last modified" date output by semester into a file called <tt>last-modified.txt</tt> in your home directory.
+  </li>
+
+  <li>
+    Write a command that reads out your laptop battery’'s power level or your desktop machine's CPU temperature from <tt>/sys</tt>. Note: if you're a macOS user, your OS doesn't have <tt>sysfs</tt>, so you can skip this exercise.
+  </li>
+
+</ol>
+
+</body>
