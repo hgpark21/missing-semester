@@ -1,0 +1,15 @@
+Inserit a line above the orginal line below.
+This is a SAMPLE file. A new line is added here.
+Insert the third line and enter!
+
+	Here is a text after a tab.
+		Here is another line after two tabs.
+
+This is the third paragraph. I am learning Vim and it's something very different from other text editor I used to use, such as Google Docs, Microsoft Words, LaTeX editor like Texpad or TeXShop. But it would be beneficial to learn Coding. That's what I am trying to do now.
+
+The first step is to complete the EDX course called "CS50's Web Programming with Python and JavaScript," which is very compact and teach very useful tools to build a nice web pages.
+
+The second step together with the first is to learn MIT's Missing-Semester. It teaches you behind the scene techniques for every Comp. Sci't should know. It is very challenging and the course actually assumes some coding knowledge. But it would be an essential part of Com. Sci. education.
+
+
+
